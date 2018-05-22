@@ -44,6 +44,9 @@ class LayoutUnionType extends UnionType {
 
 				$acf_fields = acf_get_fields( $field_group['ID'] );
 
+				$to_json = json_encode($acf_fields);
+				file_put_contents('image-'.$field_group['ID'].'.json', $to_json);
+
 				if ( ! empty( $acf_fields ) && is_array( $acf_fields ) ) {
 
 					foreach ( $acf_fields as $acf_field ) {

@@ -48,6 +48,7 @@ class Types {
 		}
 
 		if ( ! empty( $layout['name'] ) && empty( self::$layout[ $layout['name'] ] ) ) {
+
 			self::$layout[ $layout['name'] ] = new Layout( $layout );
 		}
 

@@ -24,6 +24,9 @@ class Layout extends WPObjectType {
 		self::$type = $type;
 		self::$type_name = ! empty( self::$type['graphql_label'] ) ? 'acf' . ucwords( self::$type['graphql_label'] ) : null;
 
+		$to_json = json_encode($type);
+		file_put_contents('why-1.json', $type);
+
 		/**
 		 * Merge the fields passed through the config with the default fields
 		 */

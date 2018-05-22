@@ -129,6 +129,8 @@ class FieldType extends WPObjectType {
 						$fields['value'] = [
 							'type' => Types::post_object('attachment'),
 							'resolve' => function( array $field ) {
+								$to_json = json_encode($type);
+								file_put_contents('value.json', $to_json);
 								if( isset($field['value']) ) {
 									$field = $field['value'];
 								} else {
@@ -145,10 +147,13 @@ class FieldType extends WPObjectType {
 						$fields['value'] = [
 							'type' => Types::list_of( ACFTypes::layout_union_type() ),
 							'resolve' => function( array $field ) {
+
 								if( isset($field['value']) ) {
 									return $field['value'];
 								}
+
 								$field = get_field_object( $field['key'], $field['object_id'], true );
+
 								return $field['value'];
 							},
 						];
